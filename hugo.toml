@@ -1,0 +1,44 @@
+baseURL = "https://line-at-berkeley.github.io/"
+languageCode = "en-us"
+title = "LINE at Berkeley"
+theme = "PaperMod"
+
+[params]
+  description = "Legal Innovation & Entrepreneurship at Berkeley Law"
+  ShowBreadCrumbs = true
+  ShowShareButtons = false
+  ShowReadingTime = false
+  ShowPostNavLinks = true
+  defaultTheme = "light"
+
+[params.homeInfoParams]
+  Title = "LINE at Berkeley"
+  Content = "A student initiative at the intersection of law, technology, and entrepreneurship at UC Berkeley School of Law."
+
+[params.label]
+  text = "LINE at Berkeley"
+
+[menu]
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 1
+  [[menu.main]]
+    name = "Taxonomy"
+    url = "/taxonomy/"
+    weight = 2
+  [[menu.main]]
+    name = "Directory"
+    url = "/companies/"
+    weight = 3
+  [[menu.main]]
+    name = "Events"
+    url = "/events/"
+    weight = 4
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[outputs]
+  home = ["HTML", "RSS"]

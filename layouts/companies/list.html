@@ -1,0 +1,35 @@
+{{ define "main" }}
+<header class="page-header">
+  <h1>{{ .Title }}</h1>
+  {{ with .Content }}<div class="post-content">{{ . }}</div>{{ end }}
+</header>
+
+<div class="company-filters" style="margin-bottom: 2rem;">
+  <strong>Filter by category:</strong>
+  {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+    <a href="{{ "/categories/" | relURL }}{{ $name | urlize }}/"
+       style="margin-right: 0.75rem; text-decoration: underline;">
+      {{ $name | humanize }} ({{ len $taxonomy }})
+    </a>
+  {{ end }}
+</div>
+
+{{ range .Pages.ByTitle }}
+<article style="margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+  <h2 style="margin-bottom: 0.25rem;">
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  </h2>
+  <p style="color: #666; margin: 0.25rem 0;">
+    {{ with .Params.stage }}{{ . }} · {{ end }}
+    {{ with .Params.headquarters }}{{ . }} · {{ end }}
+    {{ with .Params.founded }}Founded {{ . }}{{ end }}
+  </p>
+  <p>{{ .Summary }}</p>
+  {{ range .GetTerms "categories" }}
+    <span style="font-size: 0.85rem; background: #f0f0f0; padding: 2px 8px; border-radius: 3px; margin-right: 4px;">
+      {{ .LinkTitle }}
+    </span>
+  {{ end }}
+</article>
+{{ end }}
+{{ end }}
